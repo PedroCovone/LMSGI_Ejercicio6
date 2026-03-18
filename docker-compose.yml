@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - "C:/Users/Tarde/Desktop/cualquier-cosa-docker:/var/www/html"
+  bbdd:
+    image: mysql:5.7
+    environment: 
+      MYSQL_ROOT_PASSWORD: bbddphp
+      MYSQL_DATABASE: bbddphp
+    volumes:
+      - db_data:/var/lib/mysql
+
+  bbddcliente:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: bbdd
+      PMA_USER: root
+      PMA_PASSWORD: bbddphp
+
+volumes:
+  db_data:
