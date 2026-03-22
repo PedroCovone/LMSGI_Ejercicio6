@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: bbdd
--- Tiempo de generación: 19-03-2026 a las 15:13:37
+-- Tiempo de generación: 22-03-2026 a las 13:36:39
 -- Versión del servidor: 5.7.44
 -- Versión de PHP: 8.3.26
 
@@ -18,15 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bbddphp`
---
-CREATE DATABASE IF NOT EXISTS `bbddphp` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `bbddphp`;
---
 -- Base de datos: `gamberro`
 --
-CREATE DATABASE IF NOT EXISTS `gamberro` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE `gamberro`;
 
 -- --------------------------------------------------------
 
@@ -36,11 +29,21 @@ USE `gamberro`;
 
 CREATE TABLE `CLIENTES` (
   `ID` int(11) NOT NULL,
-  `Nombre` varchar(50) COLLATE utf8_bin NOT NULL,
-  `Apellidos` varchar(50) COLLATE utf8_bin NOT NULL,
-  `DNI` int(11) NOT NULL,
-  `Poblacion` varchar(50) COLLATE utf8_bin NOT NULL
+  `NOMBRE` varchar(50) COLLATE utf8_bin NOT NULL,
+  `APELLIDOS` varchar(50) COLLATE utf8_bin NOT NULL,
+  `DNI` varchar(11) COLLATE utf8_bin NOT NULL,
+  `DIRECCION` text COLLATE utf8_bin NOT NULL,
+  `POBLACION` varchar(50) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `CLIENTES`
+--
+
+INSERT INTO `CLIENTES` (`ID`, `NOMBRE`, `APELLIDOS`, `DNI`, `DIRECCION`, `POBLACION`) VALUES
+(1, 'Prueba', 'Pruebez', '12345A', 'CallePrueba1', 'Pruebia'),
+(2, 'Predro', 'covone araujo', '53521042L', 'Alguna calle de Navia', 'Navia'),
+(5, '1', '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -87,7 +90,7 @@ ALTER TABLE `USUARIOS`
 -- AUTO_INCREMENT de la tabla `CLIENTES`
 --
 ALTER TABLE `CLIENTES`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `USUARIOS`

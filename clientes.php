@@ -1,6 +1,6 @@
 <?php
-    include "conexion_bbdd.php";
 
+    include "conexion_bbdd.php";
 
     $consulta = "SELECT * FROM CLIENTES";
     $resultado = $conexion->query($consulta);
@@ -15,20 +15,16 @@
     <body>
 
         <h1>Listado de clientes</h1>
-        <a href="nuevo_cliente.html">Crear nuevo cliente</a>
+        <a href="nuevo_cliente.php">Crear nuevo cliente</a>
 
         <ul>
             <?php foreach($clientes as $cliente):?>
-            <li><?php echo $cliente["Nombre"]?></li>
-                <a href="editar_usuario.php">Editar</a>
-                <a href="borrar_usuario.php?ID=<?php echo $cliente["ID"]?>">Borrar</a>
+            <li><?php echo $cliente["NOMBRE"]?>
+                <a href="editar_usuario.php?ID=<?php echo $cliente["ID"]?>">| (Editar</a>    
+                <a href="borrar_usuario.php?ID=<?php echo $cliente["ID"]?>">| Borrar)</a>
+            </li>
             <?php endforeach;?>
-
         </ul>
-
-        <form>
-            <input type="text" name="nombre" value="<?php ?>">
-        </form>
        
        <p>Pez molón:</p>
        <img src="fish.gif">
