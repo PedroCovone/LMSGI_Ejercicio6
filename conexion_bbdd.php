@@ -3,7 +3,7 @@
     $servidor = "bbdd";
     $usuario = "root";
     $contraseña = "bbddphp";
-    $nombre_bbdd = "gamberro";
+    $nombre_bbdd = "bbddphp";
 
     $conexion = new mysqli($servidor, $usuario, $contraseña, $nombre_bbdd);
 
