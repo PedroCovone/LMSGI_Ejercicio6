@@ -17,6 +17,22 @@
 
     $fecha = date("d-m-y");
 
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+
+        $consulta3 = "INSERT INTO RESERVAS(Id, Id_pelicula, Fecha_reserva) 
+		VALUES ('$ID_usuario', '$ID_pelicula', '$fecha')";
+		$resultado = $conexion->query($consulta3);
+
+		if ($resultado == TRUE) {
+			header("Location:reserva_realizada.php");
+		} else {
+			echo "Error en la inserción: " . $conexion->error;
+		}
+		
+		$conexion->close();
+    }
+
 ?>
 
 <html>
@@ -36,9 +52,7 @@
             <p><?php echo $fecha ?></p>
         <h2>Duración préstamo</h2>
             <p>7 días</p>
-      <!--   <h2>Fecha de devolución</h2>
-       <?php //echo $fecha->modify('+1 day +3 month + 1 year'); ?> -->
-<form method="GET"action="reserva_realizada.php?ID_pelicula=<?php echo $autor["ID"]?>&ID_usuario=<?php echo $ID_usuario ?>">
+<form method="POST"action="">
   <input type="submit" value="Reservar">
 </form>
     </body>

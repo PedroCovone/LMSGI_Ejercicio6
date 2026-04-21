@@ -21,7 +21,8 @@
             <?php foreach($clientes as $cliente):?>
             <li><?php echo $cliente["NOMBRE"]?>
                 <a href="editar_usuario.php?ID=<?php echo $cliente["ID"]?>">| (Editar</a>
-                <a href="lista.php?ID=<?php echo $cliente["ID"]?>">| Reservar |</a>    
+                <a href="lista.php?ID=<?php echo $cliente["ID"]?>">| Reservar película |</a>
+                <a href="libros.php?ID=<?php echo $cliente["ID"]?>">| Reservar libro |</a>    
                 <a href="borrar_usuario.php?ID=<?php echo $cliente["ID"]?>">| Borrar)</a>
             </li>
             <?php endforeach;?>

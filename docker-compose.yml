@@ -5,7 +5,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - "C:/Users/Tarde/Desktop/LMSGI_Ejercicio6:/var/www/html"
+      - "C:/Users/Usuario/Diego/LMSGI_Ejercicio6:/var/www/html"
   bbdd:
     image: mysql:5.7
     environment: 

@@ -1,8 +1,9 @@
 <?php
 
-    include "conexion_bbdd.php";
-        $ID_pelicula = $_GET["ID_pelicula"];
-    $ID_usuario = $_GET["ID_usuario"];
-    echo $ID_pelicula;
 
 ?>
+
+<html>
+    <h1>Reserva realizada</h1>
+    <a href="clientes.php">Volver</a>
+</html>
