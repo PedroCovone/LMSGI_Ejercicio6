@@ -20,14 +20,19 @@
         <ul>
             <?php foreach($clientes as $cliente):?>
             <li><?php echo $cliente["NOMBRE"]?>
-                <a href="editar_usuario.php?ID=<?php echo $cliente["ID"]?>">| (Editar</a>    
+                <a href="editar_usuario.php?ID=<?php echo $cliente["ID"]?>">| (Editar</a>
+                <a href="lista (3).php?ID=<?php echo $cliente["ID"]?>">| Reservar película |</a>
+                <a href="libros.php?ID=<?php echo $cliente["ID"]?>">| Reservar libro |</a>    
                 <a href="borrar_usuario.php?ID=<?php echo $cliente["ID"]?>">| Borrar)</a>
             </li>
             <?php endforeach;?>
         </ul>
        
-       <p>Pez molón:</p>
-       <img src="fish.gif">
+        <p>Pez molón:</p>
+        <img src="fish.gif">
+
+        <a href="lista (3).php">Listado películas</a>
+
 
     </body>
 
