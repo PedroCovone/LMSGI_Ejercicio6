@@ -5,7 +5,11 @@ services:
     ports:
       - "8080:80"
     volumes:
+<<<<<<< HEAD
       - "C:/Users/Diego/Desktop/LMSGI_Ejercicio6:/var/www/html"
+=======
+      - "C:/Users/Usuario/Diego/LMSGI_Ejercicio6:/var/www/html"
+>>>>>>> 8082adef2ec0edc649fa11a579189839ac7178db
   bbdd:
     image: mysql:5.7
     environment: 
