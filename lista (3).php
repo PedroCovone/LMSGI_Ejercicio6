@@ -27,19 +27,26 @@
    
 
     $consulta = "SELECT * FROM PELICULAS WHERE 1=1";
-    if (!empty($genero_sel))   $consulta .= " AND Genero = '" . $conexion->real_escape_string($genero_sel) . "'";
-    if (!empty($director_sel)) $consulta .= " AND Director = '" . $conexion->real_escape_string($director_sel) . "'";
-    if ($titulo != "") {
-    $sql .= " AND TITULO =$titulo";
-   }
-  if ($anio != "") {
-    $sql .= " AND ANIO = $anio";
-}
    
+   if (!empty($genero_sel)){
+    $consulta .= " AND Genero = '" . $conexion->real_escape_string($genero_sel) . "'";
+}
+
+if (!empty($director_sel)){
+    $consulta .= " AND Director = '" . $conexion->real_escape_string($director_sel) . "'";
+}
+
+if ($titulo != ""){
+    $consulta .= " AND Titulo LIKE '%$titulo%'";
+}
+
+if ($anio != ""){
+    $consulta .= " AND Año_estreno = $anio";
+}
     $resultado = $conexion->query($consulta);
     $peliculas = $resultado->fetch_all(MYSQLI_ASSOC);
 
-   /*$resultado = mysqli_query($conexion, $sql);*/
+   
 
   
 
@@ -56,11 +63,32 @@
        <form method="GET" action="lista (3).php">
     <input type="text" name="titulo" placeholder="Buscar por título">
 
-    <input type="text" name="genero" placeholder="Género">
+     <select name="genero">
+        <option value="">-- Género --</option>
+
+        <?php foreach($lista_generos as $g){ ?>
+            <option value="<?php echo $g['Genero']; ?>">
+                <?php echo $g['Genero']; ?>
+            </option>
+        <?php } ?>
+
+    </select>
 
     <input type="number" name="anio" placeholder="Año">
 
-    <input type="text" name="director" placeholder="Director / Autor">
+     <select name="director">
+        <option value="">-- Director --</option>
+
+        <?php foreach($lista_directores as $d){ ?>
+            <option value="<?php echo $d['Director']; ?>">
+                <?php echo $d['Director']; ?>
+            </option>
+        <?php } ?>
+
+    </select>
+
+    <button type="submit">Filtrar</button>
+</form>
 
     <button type="submit">Filtrar</button>
     </form>
@@ -77,7 +105,7 @@
                 <th>Género</th>
             </tr>
 
-            <?php foreach($autores as $autor): ?>
+            <?php foreach($peliculas as $autor): ?>
             <tr>
                 <td><a href="reservar_pelicula.php?ID_pelicula=<?php echo $autor["ID"]?>&ID_usuario=<?php echo $ID_usuario ?>">[Reservar]</a></td>
                 <td> <?php echo $autor["Titulo"] ?> </td>
