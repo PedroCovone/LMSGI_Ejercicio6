@@ -9,12 +9,12 @@
     $autores = $resultado0->fetch_all(MYSQLI_ASSOC);
 
 
-     $ID_usuario = $_GET['titulo'] ?? "";
+    $ID_usuario = $_GET["ID"];
 
-     $titulo = $_GET['titulo'] ?? "";
+    $titulo = $_GET['titulo'] ?? "";
     $genero = $_GET['genero'] ?? "";
-     $anio = $_GET['anio'] ?? "";
-     $director = $_GET['director'] ?? "";
+    $anio = $_GET['anio'] ?? "";
+    $director = $_GET['director'] ?? "";
 
  
     
