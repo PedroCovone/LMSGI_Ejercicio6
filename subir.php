@@ -2,7 +2,7 @@
     include "conexion_bbdd.php";
     $titulo = $_POST["Titulo"];
 
-    $nombreImagen = $_POST["imagen"]["name"];
+    $nombreImagen = $_FILES["imagen"]["name"];
     $rutaImagen = $_FILES["imagen"]["tmp_name"];
 
     $rutaDestino = "IMG/" . $nombreImagen;
@@ -14,8 +14,6 @@
     }else
         echo "error";
     
-
-
 ?>
 
 
