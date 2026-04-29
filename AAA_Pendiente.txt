@@ -2,7 +2,6 @@ Cosas que quedan pendientes:
 
 ----------
 Diego:
--Hacer el filtro (3.2)
 -Hacer todo lo de películas pero ahora para libros en la misma página listas.php (3.1)
 ----------
 Illán:
@@ -11,7 +10,6 @@ Illán:
 -Poder insertar nuevas películas y libros (5.1)
 ----------
 Pedro:
--Hacer lo del cifrado SHA-256 (2.1)
 -Sesiones activas para navegación (2.2)
 -Mostrar estado disponible/reservado o un check habilitado o deshabilitado (3.3 y 4.1)
 -Arreglar los bugs que queden

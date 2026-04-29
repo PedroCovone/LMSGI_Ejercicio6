@@ -18,6 +18,7 @@
             else{
                 echo "No se ha podido iniciar sesión :(";
             }
+            break;
         }
     }
 ?>
@@ -32,7 +33,9 @@
 		<form action = "" method="POST">
 			<p>Usuario: <input type="text" name="nombre" required> </p>
 			<p>Contraseña: <input type="password" name="contraseña" required></p>
-			<br><br>
+			<br>
+            <a href="nuevo_usuario.php">Registrarse</a>
+            <br><br>
 			<input type="submit">
 		</form>
         <p>(Chuleta para iniciar sesión) [Usuario: admin | Contraseña: 1234]</p>
