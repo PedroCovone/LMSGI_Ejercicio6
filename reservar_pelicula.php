@@ -20,6 +20,14 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
+       $check = "SELECT * FROM RESERVAS WHERE Id_pelicula = '$ID_pelicula'";
+       $resultado = $conexion->query($check);
+
+        if ($resultado->num_rows > 0){
+       echo "Película ya reservada";
+       exit();
+        }
+        
         $consulta3 = "INSERT INTO RESERVAS(Id, Id_pelicula, Fecha_reserva) 
 		VALUES ('$ID_usuario', '$ID_pelicula', '$fecha')";
 		$resultado = $conexion->query($consulta3);
