@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: bbdd
--- Tiempo de generación: 25-03-2026 a las 17:16:59
+-- Tiempo de generación: 07-05-2026 a las 17:26:07
 -- Versión del servidor: 5.7.44
 -- Versión de PHP: 8.3.26
 
@@ -88,10 +88,7 @@ CREATE TABLE `CLIENTES` (
 --
 
 INSERT INTO `CLIENTES` (`ID`, `NOMBRE`, `APELLIDOS`, `DNI`, `DIRECCION`, `POBLACION`) VALUES
-(1, 'Prueba', 'Pruebez', '12345A', 'CallePrueba1', 'Pruebia'),
-(2, 'Predro', 'covone araujo', '53521042L', 'Alguna calle de Navia', 'Navia'),
-(5, '1', '1', '1', '1', '1'),
-(6, 'Ã¡', '1', '1', '1', '1');
+(1, 'Prueba', 'Pruebez', '12345A', 'CallePrueba1', 'Pruebia');
 
 -- --------------------------------------------------------
 
@@ -107,42 +104,43 @@ CREATE TABLE `LIBROS` (
   `Editorial` varchar(10) CHARACTER SET latin1 DEFAULT NULL,
   `Paginas` int(3) DEFAULT NULL,
   `Año` varchar(10) CHARACTER SET latin1 DEFAULT NULL,
-  `Precio` decimal(4,2) DEFAULT NULL
+  `Precio` decimal(4,2) DEFAULT NULL,
+  `ESTADO` varchar(20) COLLATE utf8_bin DEFAULT 'disponible'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `LIBROS`
 --
 
-INSERT INTO `LIBROS` (`Id`, `Titulo`, `Autor_id`, `Genero`, `Editorial`, `Paginas`, `Año`, `Precio`) VALUES
-(1, 'El Señor de los anillos: La comunidad del anillo', 1, 'Fantástico', 'Minotauro', 488, '1954-01-01', 18.00),
-(2, 'El viejo y el mar', 2, 'Novela', 'Debolsillo', 208, '1952-01-01', 10.95),
-(3, 'Las Crónicas de Narnia: El león, la bruja y el armario', 3, 'Fantástico', 'Destino', 240, '1950-01-01', 15.00),
-(4, 'Rebeldes', 4, 'Drama', 'Alfaguara', 224, '1967-01-01', 12.00),
-(5, 'Harry Potter y la prisionero de Azkaban', 5, 'Fantástico', 'Salamandra', 264, '1999-01-01', 18.00),
-(6, 'Canción de hielo y fuego: Juego de Tronos', 6, 'Fantástico', 'Planeta', 800, '1996-01-01', 20.00),
-(7, 'Reencuentro', 7, 'Drama', 'Tusquets', 128, '1971-01-01', 10.00),
-(8, 'La verdad sobre el caso Harry Quebert', 8, 'Policíaco', 'Alfaguara', 672, '2012-01-01', 12.95),
-(9, 'La sociedad literaria y el pastel de piel de patata de Guernsey', 9, 'Novela epistolar', 'Salamandra', 274, '2007-01-01', 10.00),
-(10, 'El mar', 10, 'Fantástico', 'SM', 260, '2015-01-01', 12.95),
-(11, 'El curioso incidente del perro a medianoche', 11, 'Novela', 'Salamandra', 270, '2003-01-01', 10.00),
-(12, 'La hija del mar', 12, 'Fantástico', 'SM', 112, '1996-01-01', 10.00),
-(13, 'Orgullo y prejuicio', 13, 'Novela', 'Penguin', 448, '1813-01-01', 12.00),
-(14, 'Martes con mi viejo profesor', 14, 'Novela biográfica', 'Maeva', 143, '1997-01-01', 13.00),
-(15, 'Desconocidos', 15, 'Policíaco', 'Edebé', 221, '2018-01-01', 12.00),
-(16, 'Nunca seré tu héroe', 16, 'Novela', 'SM', 192, '1998-01-01', 10.95),
-(17, 'Crónica de una muerte anunciada', 17, 'Policíaco', 'Debolsillo', 156, '1981-01-01', 9.95),
-(18, 'El nombre del viento', 18, 'Fantástico', 'Debolsillo', 880, '2007-01-01', 22.00),
-(19, 'La historia interminable', 19, 'Fantástico', 'Alfaguara', 496, '1979-01-01', 15.00),
-(20, 'La ley de la calle', 4, 'Drama', 'Alfaguara', 112, '1975-01-01', 10.00),
-(21, 'Nacidos de la bruma: El imperio final', 20, 'Fantástico', 'Nova', 841, '2006-01-01', 20.00),
-(22, '¿Sueñan los androides con ovejas eléctricas?', 21, 'Ciencia ficción', 'Minotauro', 272, '1968-01-01', 10.00),
-(23, 'El príncipe de la niebla', 22, 'Fantástico', 'Edebé', 240, '1993-01-01', 14.00),
-(24, 'La leyenda del rey errante', 23, 'Fantástico', 'SM', 560, '2004-01-01', 21.00),
-(25, 'La isla del tesoro', 24, 'Aventuras', 'Edelvives', 288, '1883-01-01', 24.90),
-(26, 'Matilda', 25, 'Infantil', 'Loqueleo', 288, '1988-01-01', 10.00),
-(27, 'El gran Gatsby', 26, 'Drama', 'Austral', 224, '1925-01-01', 11.50),
-(28, 'Fahrenheit 451', 27, 'Ciencia ficción', 'Debolsillo', 192, '1953-01-01', 12.50);
+INSERT INTO `LIBROS` (`Id`, `Titulo`, `Autor_id`, `Genero`, `Editorial`, `Paginas`, `Año`, `Precio`, `ESTADO`) VALUES
+(1, 'El Señor de los anillos: La comunidad del anillo', 1, 'Fantástico', 'Minotauro', 488, '1954-01-01', 18.00, 'no'),
+(2, 'El viejo y el mar', 2, 'Novela', 'Debolsillo', 208, '1952-01-01', 10.95, 'no'),
+(3, 'Las Crónicas de Narnia: El león, la bruja y el armario', 3, 'Fantástico', 'Destino', 240, '1950-01-01', 15.00, 'no'),
+(4, 'Rebeldes', 4, 'Drama', 'Alfaguara', 224, '1967-01-01', 12.00, 'no'),
+(5, 'Harry Potter y la prisionero de Azkaban', 5, 'Fantástico', 'Salamandra', 264, '1999-01-01', 18.00, 'no'),
+(6, 'Canción de hielo y fuego: Juego de Tronos', 6, 'Fantástico', 'Planeta', 800, '1996-01-01', 20.00, 'no'),
+(7, 'Reencuentro', 7, 'Drama', 'Tusquets', 128, '1971-01-01', 10.00, 'no'),
+(8, 'La verdad sobre el caso Harry Quebert', 8, 'Policíaco', 'Alfaguara', 672, '2012-01-01', 12.95, 'no'),
+(9, 'La sociedad literaria y el pastel de piel de patata de Guernsey', 9, 'Novela epistolar', 'Salamandra', 274, '2007-01-01', 10.00, 'no'),
+(10, 'El mar', 10, 'Fantástico', 'SM', 260, '2015-01-01', 12.95, 'no'),
+(11, 'El curioso incidente del perro a medianoche', 11, 'Novela', 'Salamandra', 270, '2003-01-01', 10.00, 'no'),
+(12, 'La hija del mar', 12, 'Fantástico', 'SM', 112, '1996-01-01', 10.00, 'no'),
+(13, 'Orgullo y prejuicio', 13, 'Novela', 'Penguin', 448, '1813-01-01', 12.00, 'no'),
+(14, 'Martes con mi viejo profesor', 14, 'Novela biográfica', 'Maeva', 143, '1997-01-01', 13.00, 'no'),
+(15, 'Desconocidos', 15, 'Policíaco', 'Edebé', 221, '2018-01-01', 12.00, 'disponible'),
+(16, 'Nunca seré tu héroe', 16, 'Novela', 'SM', 192, '1998-01-01', 10.95, 'disponible'),
+(17, 'Crónica de una muerte anunciada', 17, 'Policíaco', 'Debolsillo', 156, '1981-01-01', 9.95, 'no'),
+(18, 'El nombre del viento', 18, 'Fantástico', 'Debolsillo', 880, '2007-01-01', 22.00, 'disponible'),
+(19, 'La historia interminable', 19, 'Fantástico', 'Alfaguara', 496, '1979-01-01', 15.00, 'disponible'),
+(20, 'La ley de la calle', 4, 'Drama', 'Alfaguara', 112, '1975-01-01', 10.00, 'no'),
+(21, 'Nacidos de la bruma: El imperio final', 20, 'Fantástico', 'Nova', 841, '2006-01-01', 20.00, 'disponible'),
+(22, '¿Sueñan los androides con ovejas eléctricas?', 21, 'Ciencia ficción', 'Minotauro', 272, '1968-01-01', 10.00, 'disponible'),
+(23, 'El príncipe de la niebla', 22, 'Fantástico', 'Edebé', 240, '1993-01-01', 14.00, 'disponible'),
+(24, 'La leyenda del rey errante', 23, 'Fantástico', 'SM', 560, '2004-01-01', 21.00, 'disponible'),
+(25, 'La isla del tesoro', 24, 'Aventuras', 'Edelvives', 288, '1883-01-01', 24.90, 'disponible'),
+(26, 'Matilda', 25, 'Infantil', 'Loqueleo', 288, '1988-01-01', 10.00, 'disponible'),
+(27, 'El gran Gatsby', 26, 'Drama', 'Austral', 224, '1925-01-01', 11.50, 'disponible'),
+(28, 'Fahrenheit 451', 27, 'Ciencia ficción', 'Debolsillo', 192, '1953-01-01', 12.50, 'disponible');
 
 -- --------------------------------------------------------
 
@@ -158,44 +156,45 @@ CREATE TABLE `PELICULAS` (
   `Actores` varchar(112) CHARACTER SET latin1 DEFAULT NULL,
   `Genero` varchar(15) CHARACTER SET latin1 DEFAULT NULL,
   `Tipo_adaptacion` varchar(8) CHARACTER SET latin1 DEFAULT NULL,
-  `Adaptacion_ID` int(11) DEFAULT NULL
+  `Adaptacion_ID` int(11) DEFAULT NULL,
+  `ESTADO` varchar(20) COLLATE utf8_bin DEFAULT 'disponible'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `PELICULAS`
 --
 
-INSERT INTO `PELICULAS` (`ID`, `Titulo`, `Año_estreno`, `Director`, `Actores`, `Genero`, `Tipo_adaptacion`, `Adaptacion_ID`) VALUES
-(1, 'El editor de libros', '2016-01-01', 'Michael Grandage', 'Colin Firth, Jude Law, Nicole Kidman', 'Biografía', 'Película', NULL),
-(2, 'La historia interminable', '1984-01-01', 'Wolfgang Petersen', 'Barret Oliver, Noah Hathaway, Moses Gunn', 'Fantasía', 'Película', 19),
-(3, 'La ladrona de libros', '2013-01-01', 'Brian Percival', 'Sophie Nélisse, Geoffrey Rush, Emily Watson, Nico Liersch', 'Drama', 'Película', NULL),
-(4, 'La bruja novata', '1971-01-01', 'Robert Stevenson', 'Angela Lansbury, David Tomlinson, Roddy McDowall', 'Fantasía', 'Película', NULL),
-(5, 'Harry Potter y el prisionero de Azkaban', '2004-01-01', 'Alfonso Cuarón', 'Daniel Radcliffe, Rupert Grint, Emma Watson', 'Fantasía', 'Película', 5),
-(6, 'El señor de los anillos: La comunidad del anillo', '2001-01-01', 'Peter Jackson', 'Elijah Wood, Ian McKellen, Viggo Mortensen', 'Fantasía', 'Película', 1),
-(7, 'Charlie y la fábrica de chocolate', '2005-01-01', 'Tim Burton', 'Johnny Depp, Freddie Highmore, David Kelly, Deep Roy', 'Fantasía', 'Película', NULL),
-(8, 'Las Crónicas de Narnia: El león, la bruja y el armario', '2005-01-01', 'Andrew Adamson', 'Georgie Henley, William Moseley, Skandar Keynes, Anna Popplewell, Tilda Swinton', 'Fantasía', 'Película', NULL),
-(9, 'Rebeldes', '1983-01-01', 'Francis Ford Coppola', 'C. Thomas Howell, Matt Dillon, Ralph Macchio, Diane Lane, Rob Lowe, Patrick Swayze, Emilio Estévez, Tom Cruise', 'Drama', 'Película', 4),
-(10, 'Juego de Tronos: Temporada 1', '2011-01-01', 'David Benioff, D.B. Weiss', 'Emilia Clarke, Kit Harington, Lena Headey, Peter Dinklage, Maisie Williams, Nikolaj Coster-Waldau, Sophie Turner', 'Fantasía', 'Serie', 6),
-(11, 'La verdad sobre el caso Harry Quebert', '2018-01-01', 'Jean-Jacques Annaud', 'Patrick Dempsey, Ben Schnetzer, Kristine Froseth, Damon Wayans Jr.', 'Policíaco', 'Serie', 8),
-(12, 'La sociedad literaria y el pastel de piel de patata de Guernsey', '2018-01-01', 'Mike Newell', 'Lily James, Michiel Huisman, Glen Powell, Jessica Brown Findlay, Matthew Goode', 'Drama', 'Película', 9),
-(13, 'Orgullo y prejuicio', '2005-01-01', 'Joe Wright', 'Keira Knightley, Matthew Macfadyen, Brenda Blethyn, Donald Sutherland', 'Romance', 'Película', 13),
-(14, 'Orgullo y prejuicio', '1995-01-01', 'Simon Langton', 'Colin Firth, Jennifer Ehle, David Bamber, Crispin Bonham-carter, Anna Chancellor', 'Romance', 'Serie', 13),
-(15, 'Crónica de una muerte anunciada', '1987-01-01', 'Francesco Rosi', 'Anthony Delon, Rupert Everett, Lucía Bosé, Ornella Muti, Gian Maria Volonté', 'Drama', 'Película', NULL),
-(16, 'La ley de la calle', '1983-01-01', 'Francis Ford Coppola', 'Matt Dillon, Mickey Rourke, Diane Lane, Dennis Hopper, Nicolas Cage', 'Drama', 'Película', 20),
-(17, 'Blade Runner', '1982-01-01', 'Ridley Scott', 'Harrison Ford, Rutger Hauer, Sean Young, Daryl Hannah, Edward James Olmos', 'Ciencia ficción', 'Película', 22),
-(18, 'La isla del tesoro', '1934-01-01', 'Victor Fleming', 'Jackie Cooper, Wallace Beery, Lewis Stone, Lionel Barrymore, Otto Kruger', 'Aventuras', 'Película', 25),
-(19, 'La isla del tesoro', '1950-01-01', 'Byron Haskin', 'Bobby Driscoll, Robert Newton, Basil Sydney, Walter Fitzgerald, Denis O\'Dea', 'Aventuras', 'Película', 25),
-(20, 'La isla del tesoro', '1990-01-01', 'Fraser Clarke Heston', 'Charlton Heston, Christian Bale, Oliver Reed, Christopher Lee, Richard Johnson', 'Aventuras', 'Serie', 25),
-(21, 'Matilda', '1996-01-01', 'Danny DeVito', 'Mara Wilson, Danny DeVito, Rhea Perlman, Embeth Davidtz, Pam Ferris', 'Infantil', 'Película', NULL),
-(22, 'Un mundo de fantasía', '1971-01-01', 'Mel Stuart', 'Gene Wilder, Jack Albertson, Peter Ostrum, Roy Kinnear, Michael Bollner', 'Infantil', 'Película', NULL),
-(23, 'Por quién doblan las campanas', '1943-01-01', 'Sam Wood', 'Gary Cooper, Ingrid Bergman, Akim Tamiroff, Arturo de Córdova, Vladimir Sokoloff', 'Drama', 'Película', NULL),
-(24, 'Harry Potter y el cáliz de fuego', '2005-01-01', 'Mike Newell', 'Daniel Radcliffe, Rupert Grint, Emma Watson, Robbie Coltrane, Michael Gambon', 'Fantasía', 'Película', NULL),
-(25, 'El gran Gatsby', '1949-01-01', 'Elliott Nugent', 'Alan Ladd, Betty Field, Macdonald Carey, Ruth Hussey, Barry Sullivan', 'Drama', 'Película', 27),
-(26, 'El gran Gatsby', '1974-01-01', 'Jack Clayton', 'Robert Redford, Mia Farrow, Bruce Dern, Karen Black, Scott Wilson', 'Drama', 'Película', 27),
-(27, 'El gran Gatsby', '2000-01-01', 'Robert Markowitz', 'Mira Sorvino, Toby Stephens, Paul Rudd, Martin Donovan, Francie Swift', 'Drama', 'Serie', 27),
-(28, 'El gran Gatsby', '2013-01-01', 'Baz Luhrmann', 'Leonardo DiCaprio, Tobey Maguire, Carey Mulligan, Joel Edgerton, Isla Fisher', 'Drama', 'Película', 27),
-(29, 'Fahrenheit 451', '1966-01-01', 'François Truffaut', 'Julie Christie, Oskar Werner, Cyril Cusack, Anton Diffring, Jeremy Spenser, Ann Bell', 'Ciencia ficción', 'Película', 26),
-(30, 'Fahrenheit 451', '2018-01-01', 'Ramin Bahrani', 'Michael B. Jordan, Michael Shannon, Sofia Boutella, Laura Harrier, Lilly Singh', 'Ciencia ficción', 'Película', 26);
+INSERT INTO `PELICULAS` (`ID`, `Titulo`, `Año_estreno`, `Director`, `Actores`, `Genero`, `Tipo_adaptacion`, `Adaptacion_ID`, `ESTADO`) VALUES
+(1, 'El editor de libros', '2016-01-01', 'Michael Grandage', 'Colin Firth, Jude Law, Nicole Kidman', 'Biografía', 'Película', NULL, 'no'),
+(2, 'La historia interminable', '1984-01-01', 'Wolfgang Petersen', 'Barret Oliver, Noah Hathaway, Moses Gunn', 'Fantasía', 'Película', 19, 'no'),
+(3, 'La ladrona de libros', '2013-01-01', 'Brian Percival', 'Sophie Nélisse, Geoffrey Rush, Emily Watson, Nico Liersch', 'Drama', 'Película', NULL, 'no'),
+(4, 'La bruja novata', '1971-01-01', 'Robert Stevenson', 'Angela Lansbury, David Tomlinson, Roddy McDowall', 'Fantasía', 'Película', NULL, 'no'),
+(5, 'Harry Potter y el prisionero de Azkaban', '2004-01-01', 'Alfonso Cuarón', 'Daniel Radcliffe, Rupert Grint, Emma Watson', 'Fantasía', 'Película', 5, 'no'),
+(6, 'El señor de los anillos: La comunidad del anillo', '2001-01-01', 'Peter Jackson', 'Elijah Wood, Ian McKellen, Viggo Mortensen', 'Fantasía', 'Película', 1, 'disponible'),
+(7, 'Charlie y la fábrica de chocolate', '2005-01-01', 'Tim Burton', 'Johnny Depp, Freddie Highmore, David Kelly, Deep Roy', 'Fantasía', 'Película', NULL, 'disponible'),
+(8, 'Las Crónicas de Narnia: El león, la bruja y el armario', '2005-01-01', 'Andrew Adamson', 'Georgie Henley, William Moseley, Skandar Keynes, Anna Popplewell, Tilda Swinton', 'Fantasía', 'Película', NULL, 'no disponible'),
+(9, 'Rebeldes', '1983-01-01', 'Francis Ford Coppola', 'C. Thomas Howell, Matt Dillon, Ralph Macchio, Diane Lane, Rob Lowe, Patrick Swayze, Emilio Estévez, Tom Cruise', 'Drama', 'Película', 4, 'disponible'),
+(10, 'Juego de Tronos: Temporada 1', '2011-01-01', 'David Benioff, D.B. Weiss', 'Emilia Clarke, Kit Harington, Lena Headey, Peter Dinklage, Maisie Williams, Nikolaj Coster-Waldau, Sophie Turner', 'Fantasía', 'Serie', 6, 'disponible'),
+(11, 'La verdad sobre el caso Harry Quebert', '2018-01-01', 'Jean-Jacques Annaud', 'Patrick Dempsey, Ben Schnetzer, Kristine Froseth, Damon Wayans Jr.', 'Policíaco', 'Serie', 8, 'no disponible'),
+(12, 'La sociedad literaria y el pastel de piel de patata de Guernsey', '2018-01-01', 'Mike Newell', 'Lily James, Michiel Huisman, Glen Powell, Jessica Brown Findlay, Matthew Goode', 'Drama', 'Película', 9, 'disponible'),
+(13, 'Orgullo y prejuicio', '2005-01-01', 'Joe Wright', 'Keira Knightley, Matthew Macfadyen, Brenda Blethyn, Donald Sutherland', 'Romance', 'Película', 13, 'disponible'),
+(14, 'Orgullo y prejuicio', '1995-01-01', 'Simon Langton', 'Colin Firth, Jennifer Ehle, David Bamber, Crispin Bonham-carter, Anna Chancellor', 'Romance', 'Serie', 13, 'disponible'),
+(15, 'Crónica de una muerte anunciada', '1987-01-01', 'Francesco Rosi', 'Anthony Delon, Rupert Everett, Lucía Bosé, Ornella Muti, Gian Maria Volonté', 'Drama', 'Película', NULL, 'no disponible'),
+(16, 'La ley de la calle', '1983-01-01', 'Francis Ford Coppola', 'Matt Dillon, Mickey Rourke, Diane Lane, Dennis Hopper, Nicolas Cage', 'Drama', 'Película', 20, 'no disponible'),
+(17, 'Blade Runner', '1982-01-01', 'Ridley Scott', 'Harrison Ford, Rutger Hauer, Sean Young, Daryl Hannah, Edward James Olmos', 'Ciencia ficción', 'Película', 22, 'no'),
+(18, 'La isla del tesoro', '1934-01-01', 'Victor Fleming', 'Jackie Cooper, Wallace Beery, Lewis Stone, Lionel Barrymore, Otto Kruger', 'Aventuras', 'Película', 25, 'no'),
+(19, 'La isla del tesoro', '1950-01-01', 'Byron Haskin', 'Bobby Driscoll, Robert Newton, Basil Sydney, Walter Fitzgerald, Denis O\'Dea', 'Aventuras', 'Película', 25, 'disponible'),
+(20, 'La isla del tesoro', '1990-01-01', 'Fraser Clarke Heston', 'Charlton Heston, Christian Bale, Oliver Reed, Christopher Lee, Richard Johnson', 'Aventuras', 'Serie', 25, 'no disponible'),
+(21, 'Matilda', '1996-01-01', 'Danny DeVito', 'Mara Wilson, Danny DeVito, Rhea Perlman, Embeth Davidtz, Pam Ferris', 'Infantil', 'Película', NULL, 'no'),
+(22, 'Un mundo de fantasía', '1971-01-01', 'Mel Stuart', 'Gene Wilder, Jack Albertson, Peter Ostrum, Roy Kinnear, Michael Bollner', 'Infantil', 'Película', NULL, 'disponible'),
+(23, 'Por quién doblan las campanas', '1943-01-01', 'Sam Wood', 'Gary Cooper, Ingrid Bergman, Akim Tamiroff, Arturo de Córdova, Vladimir Sokoloff', 'Drama', 'Película', NULL, 'disponible'),
+(24, 'Harry Potter y el cáliz de fuego', '2005-01-01', 'Mike Newell', 'Daniel Radcliffe, Rupert Grint, Emma Watson, Robbie Coltrane, Michael Gambon', 'Fantasía', 'Película', NULL, 'disponible'),
+(25, 'El gran Gatsby', '1949-01-01', 'Elliott Nugent', 'Alan Ladd, Betty Field, Macdonald Carey, Ruth Hussey, Barry Sullivan', 'Drama', 'Película', 27, 'disponible'),
+(26, 'El gran Gatsby', '1974-01-01', 'Jack Clayton', 'Robert Redford, Mia Farrow, Bruce Dern, Karen Black, Scott Wilson', 'Drama', 'Película', 27, 'disponible'),
+(27, 'El gran Gatsby', '2000-01-01', 'Robert Markowitz', 'Mira Sorvino, Toby Stephens, Paul Rudd, Martin Donovan, Francie Swift', 'Drama', 'Serie', 27, 'disponible'),
+(28, 'El gran Gatsby', '2013-01-01', 'Baz Luhrmann', 'Leonardo DiCaprio, Tobey Maguire, Carey Mulligan, Joel Edgerton, Isla Fisher', 'Drama', 'Película', 27, 'disponible'),
+(29, 'Fahrenheit 451', '1966-01-01', 'François Truffaut', 'Julie Christie, Oskar Werner, Cyril Cusack, Anton Diffring, Jeremy Spenser, Ann Bell', 'Ciencia ficción', 'Película', 26, 'disponible'),
+(30, 'Fahrenheit 451', '2018-01-01', 'Ramin Bahrani', 'Michael B. Jordan, Michael Shannon, Sofia Boutella, Laura Harrier, Lilly Singh', 'Ciencia ficción', 'Película', 26, 'disponible');
 
 -- --------------------------------------------------------
 
@@ -215,7 +214,50 @@ CREATE TABLE `RESERVAS` (
 --
 
 INSERT INTO `RESERVAS` (`Id`, `Id_libro`, `Id_pelicula`, `Fecha_reserva`) VALUES
-(1, 4, 16, '2026-01-28');
+(1, 4, 16, '2026-01-28'),
+(1, NULL, 11, '22-04-26'),
+(1, NULL, 1, '29-04-26'),
+(1, NULL, 1, '29-04-26'),
+(1, NULL, 1, '29-04-26'),
+(1, NULL, 3, '29-04-26'),
+(1, NULL, 15, '04-05-26'),
+(1, NULL, 2, '04-05-26'),
+(1, NULL, 2, '05-05-26'),
+(1, NULL, 2, '05-05-26'),
+(1, NULL, 1, '05-05-26'),
+(1, NULL, 1, '05-05-26'),
+(1, NULL, 5, '05-05-26'),
+(1, NULL, 1, '05-05-26'),
+(1, NULL, 1, '05-05-26'),
+(1, NULL, 20, '06-05-26'),
+(1, NULL, 8, '06-05-26'),
+(1, NULL, 4, '06-05-26'),
+(1, NULL, 17, '06-05-26'),
+(1, NULL, 18, '06-05-26'),
+(1, NULL, 21, '06-05-26'),
+(1, NULL, 1, '06-05-26'),
+(1, NULL, 2, '06-05-26'),
+(1, NULL, 5, '06-05-26'),
+(1, 5, NULL, '06-05-26'),
+(1, 6, NULL, '06-05-26'),
+(1, 1, NULL, '06-05-26'),
+(1, 2, NULL, '07-05-26'),
+(1, 3, NULL, '07-05-26'),
+(1, NULL, 3, '07-05-26'),
+(1, 7, NULL, '07-05-26'),
+(1, 8, NULL, '07-05-26'),
+(1, 9, NULL, '07-05-26'),
+(1, 10, NULL, '07-05-26'),
+(1, 11, NULL, '07-05-26'),
+(1, 12, NULL, '07-05-26'),
+(1, 13, NULL, '07-05-26'),
+(1, 14, NULL, '07-05-26'),
+(1, 15, NULL, '07-05-26'),
+(1, 16, NULL, '07-05-26'),
+(1, 17, NULL, '07-05-26'),
+(1, 4, NULL, '07-05-26'),
+(1, 20, NULL, '07-05-26'),
+(1, 14, NULL, '07-05-26');
 
 -- --------------------------------------------------------
 
@@ -296,7 +338,7 @@ ALTER TABLE `AUTORES`
 -- AUTO_INCREMENT de la tabla `CLIENTES`
 --
 ALTER TABLE `CLIENTES`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `LIBROS`
