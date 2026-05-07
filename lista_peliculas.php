@@ -6,19 +6,23 @@
     if (isset($_GET["ID"])) {
         $_SESSION["ID_usuario"] = $_GET["ID"];
     }
-
+   
     $ID_usuario = $_SESSION["ID_usuario"] ?? "";
+    
 
     $consulta = "SELECT DISTINCT * FROM PELICULAS";
     $resultado = $conexion->query($consulta);
     $peliculas = $resultado->fetch_all(MYSQLI_ASSOC);
 
+    $listapeliculas = "SELECT DISTINCT Id_pelicula FROM RESERVAS";
+    $resultado = $conexion->query($listapeliculas);
+    $reserva = $resultado->fetch_all(MYSQLI_ASSOC);
 
     /*Listar géneros (no sé si ponerlo aquí o en el html)*/
     $listaGeneros = "SELECT DISTINCT Genero FROM PELICULAS";
     $resultado = $conexion->query($listaGeneros);
     $generos = $resultado->fetch_all(MYSQLI_ASSOC);
-
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         /*Filtro por títulos. Funciona, no lo toques Diego */
         if (!empty($_POST["titulo"])) {
@@ -47,6 +51,17 @@
         }
     }
 
+    if(!empty($_POST["RESERVAS"])) {
+        $reserva = $_POST["RESERVAS"];
+        $consultareserva = "SELECT * FROM RESERVAS WHERE Id_pelicula = '1'";
+        $resultado = $conexion->query($consultareserva);
+        $reserva = $resultado->fetch_all(MYSQLI_ASSOC);
+        }
+     $idsReservados = [];
+
+    foreach ($reserva as $r){
+    $idsReservados[] = $r["Id_pelicula"];
+}
 
 ?>
 
@@ -87,14 +102,21 @@
                 <th>Año</th>
                 <th>Género</th>
             </tr>
-
-            <?php foreach($peliculas as $peliculas): ?>
+            <?php foreach($peliculas as $pelicula): ?>
             <tr>
-                <td><a href="reservar_pelicula.php?ID_pelicula=<?php echo $peliculas["ID"]?>&ID_usuario=<?php echo $_SESSION["ID_usuario"] ?>">[Reservar]</a></td>
-                <td> <?php echo $peliculas["Titulo"] ?> </td>
-                <td> <?php echo $peliculas["Director"] ?> </td>
-                <td> <?php echo $peliculas["Año_estreno"] ?> </td>
-                <td> <?php echo $peliculas["Genero"] ?> </td>
+
+            <?php 
+            if ($pelicula["ESTADO"] == "no"){
+             echo "<td>No disponible</td>";
+            }else{
+                    echo "<td><a href='reservar_pelicula.php?ID_pelicula=".$pelicula["ID"]."&ID_usuario=".$_SESSION["ID_usuario"]."'>Reservar</a></td>";
+                    }
+                ?>
+                         
+                <td><?php echo $pelicula["Titulo"] ?? "" ?></td>
+                <td><?php echo $pelicula["Director"] ?? "" ?></td>
+                <td><?php echo $pelicula["Año_estreno"] ?? "" ?></td>
+                <td><?php echo $pelicula["Genero"] ?? "" ?></td>
 
                 </tr>
             <?php endforeach; ?>

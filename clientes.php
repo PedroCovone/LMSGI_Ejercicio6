@@ -22,7 +22,7 @@
             <li><?php echo $cliente["NOMBRE"]?>
                 <a href="editar_usuario.php?ID=<?php echo $cliente["ID"]?>">| (Editar</a>
                 <a href="lista_peliculas.php?ID=<?php echo $cliente["ID"]?>">| Reservar película |</a>
-                <a href="libros.php?ID=<?php echo $cliente["ID"]?>">| Reservar libro |</a>    
+                <a href="lista_libros.php?ID=<?php echo $cliente["ID"]?>">| Reservar libro |</a>    
                 <a href="borrar_usuario.php?ID=<?php echo $cliente["ID"]?>">| Borrar)</a>
             </li>
             <?php endforeach;?>

@@ -1,7 +1,7 @@
 <?php
 
     include "conexion_bbdd.php";
-    $ID_pelicula = $_GET["ID_pelicula"];
+    $Id_libro = $_GET["Id_libro"];
     $ID_usuario = $_GET["ID_usuario"];
 
 
@@ -10,39 +10,38 @@
     $usuario = $resultado1->fetch_all(MYSQLI_ASSOC);
     $nombre_usuario = $usuario[0]["NOMBRE"];
 
-    $consulta2 = "SELECT Titulo FROM PELICULAS WHERE ID = $ID_pelicula";
+    $consulta2 = "SELECT Titulo FROM LIBROS WHERE Id = $Id_libro";
     $resultado2 = $conexion->query($consulta2);
-    $pelicula = $resultado2->fetch_all(MYSQLI_ASSOC);
-    $nombre_pelicula = $pelicula[0]["Titulo"];
+    $libro = $resultado2->fetch_all(MYSQLI_ASSOC);
+    $nombre_libro = $libro[0]["Titulo"];
 
     $fecha = date("d-m-y");
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
-       $check = "SELECT * FROM RESERVAS WHERE Id_pelicula = '$ID_pelicula'";
-       $resultado = $conexion->query($check);
+    $check = "SELECT * FROM RESERVAS WHERE Id_libro = '$Id_libro'";
+    $resultado = $conexion->query($check);
 
-       
-        
-        $consulta3 = "INSERT INTO RESERVAS(Id, Id_pelicula, Fecha_reserva) 
-		VALUES ('$ID_usuario', '$ID_pelicula', '$fecha')";
-		$resultado = $conexion->query($consulta3);
- 
-        $update = "UPDATE PELICULAS SET ESTADO='no' WHERE ID='$ID_pelicula'";
-        $conexion->query($update);
- 
+    
 
-		 
+    $consulta3 = "INSERT INTO RESERVAS(Id, Id_libro, Fecha_reserva) 
+    VALUES ('$ID_usuario', '$Id_libro', '$fecha')";
+
+    $resultado = $conexion->query($consulta3);
+
     if ($resultado == TRUE) {
+
+        $update = "UPDATE LIBROS SET ESTADO='no' WHERE ID='$Id_libro'";
+        $conexion->query($update);
+
         header("Location: reserva_realizada.php");
         exit();
     }
 
-    
     echo "Error en la reserva: " . $conexion->error;
 }
-     
+    
 
 ?>
 
@@ -57,7 +56,7 @@
         <h2>Cliente</h2>
             <p><?php echo $nombre_usuario ?></p>
         <h2>Película</h2>
-            <p><?php echo $nombre_pelicula ?></p>
+            <p><?php echo $nombre_libro ?></p>
         </h2>
         <h2>Fecha reserva</h2>
             <p><?php echo $fecha ?></p>
