@@ -16,6 +16,7 @@
 
         <h1>Listado de clientes</h1>
         <a href="nuevo_cliente.php">Crear nuevo cliente</a>
+        <a href="lista_reservas.php">Ver reservas</a>
 
         <ul>
             <?php foreach($clientes as $cliente):?>

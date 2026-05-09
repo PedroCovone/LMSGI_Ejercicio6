@@ -105,13 +105,19 @@
             <?php foreach($peliculas as $pelicula): ?>
             <tr>
 
-            <?php 
-            if ($pelicula["ESTADO"] == "no"){
-             echo "<td>No disponible</td>";
+            <?php
+
+            $consultaReserva = "SELECT * FROM RESERVAS WHERE Id_pelicula = ".$pelicula["ID"];
+            $resultadoReserva = $conexion->query($consultaReserva);
+            $reservaExiste = $resultadoReserva->fetch_all(MYSQLI_ASSOC);
+
+            if (!empty($reservaExiste)){
+                echo "<td>No disponible</td>";
             }else{
-                    echo "<td><a href='reservar_pelicula.php?ID_pelicula=".$pelicula["ID"]."&ID_usuario=".$_SESSION["ID_usuario"]."'>Reservar</a></td>";
-                    }
-                ?>
+                echo "<td><a href='reservar_pelicula.php?ID_pelicula=".$pelicula["ID"]."&ID_usuario=".$_SESSION["ID_usuario"]."'>Reservar</a></td>";
+            }
+
+            ?>
                          
                 <td><?php echo $pelicula["Titulo"] ?? "" ?></td>
                 <td><?php echo $pelicula["Director"] ?? "" ?></td>

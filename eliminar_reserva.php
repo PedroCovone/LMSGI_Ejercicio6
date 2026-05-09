@@ -10,9 +10,12 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $consulta = "DELETE FROM RESERVAS WHERE Id = $ID_cliente";
     $resultado = $conexion->query($consulta);
+    $update = "UPDATE PELICULAS SET ESTADO='si' WHERE ID = $ID_cliente";
+    $conexion->query($update);
 
     if($resultado == true) {
         echo "Registro eliminado";
+
     }
     else {
         echo "Error al eliminar el registro, gamberrín";
@@ -23,7 +26,7 @@
 ?>
 
 <html>
-    <a href="lista_reservas.php">Volver</a>
+    <a href="clientes.php">Volver</a>
     <h1>Eliminar reserva</h1>
     <h2>Cliente:</h2>
     <p><?php echo $cliente?></p>
