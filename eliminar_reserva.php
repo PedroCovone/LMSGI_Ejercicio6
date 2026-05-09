@@ -2,16 +2,24 @@
     
     include "conexion_bbdd.php";
     $ID_cliente = $_GET["Id"];
+    $ID_pelicula = $_GET["Id_pelicula"]??"";
+    $ID_libro = $_GET["Id_libro"]??"";
     $cliente = $_GET['Cliente'];
     $pelicula = $_GET['Pelicula']??"";
     $libro = $_GET['Libro']??"";
     $fecha = $_GET['Fecha'];
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $consulta = "DELETE FROM RESERVAS WHERE Id = $ID_cliente";
-    $resultado = $conexion->query($consulta);
-    $update = "UPDATE PELICULAS SET ESTADO='si' WHERE ID = $ID_cliente";
-    $conexion->query($update);
+        if(!empty($ID_pelicula)){
+            $consulta = "DELETE FROM RESERVAS WHERE Id_pelicula = $ID_pelicula";
+            $resultado = $conexion->query($consulta);
+        }
+        if(!empty($ID_libro)){
+            $consulta = "DELETE FROM RESERVAS WHERE Id_libro = $ID_libro";
+            $resultado = $conexion->query($consulta);
+        }
+        
+
 
     if($resultado == true) {
         echo "Registro eliminado";

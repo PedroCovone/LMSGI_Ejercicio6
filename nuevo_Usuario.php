@@ -5,9 +5,10 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuario=$_POST["usuario"];
         $contraseña=$_POST["contraseña"];
-        $hash_contraseña = hash('sha512' , $contraseña);
+        $hash_contraseña = hash('sha256' , $contraseña);
         $consulta = "INSERT INTO USUARIOS(USER, PASS, NAME) VALUES('$usuario','$hash_contraseña', 'prueba')";
         $resultado = $conexion->query($consulta);
+        /* Falta hacer un "if resultado = true" o reenviarlo a otra página */
     }
 
 ?>

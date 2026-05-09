@@ -29,8 +29,7 @@
 		VALUES ('$ID_usuario', '$ID_pelicula', '$fecha')";
 		$resultado = $conexion->query($consulta3);
  
-        $update = "UPDATE PELICULAS SET ESTADO='no' WHERE ID='$ID_pelicula'";
-        $conexion->query($update);
+
  
 
 		 

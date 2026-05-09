@@ -1,6 +1,8 @@
 <?php
 
     include "conexion_bbdd.php";
+    session_start();
+
 
     $consulta = "SELECT * FROM USUARIOS";
     $resultado = $conexion->query($consulta);
@@ -8,18 +10,19 @@
     
     $usuario_post = $_POST["nombre"] ?? "";
     $contraseña_post = $_POST["contraseña"] ?? "";
+    $contraseña_hash = hash('sha256', $contraseña_post);
     
-    //print_r($usuarios);
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         foreach($usuarios as $usuario){
-            if($usuario["USER"] == $usuario_post && $usuario["PASS"] == $contraseña_post) {
+            if($usuario["USER"] == $usuario_post && $usuario["PASS"] == $contraseña_hash) {
+                $_SESSION["usuario"] = $usuario_post;
                 header("Location: clientes.php");
+                exit;
             }
-            else{
-                echo "No se ha podido iniciar sesión :(";
-            }
-            break;
         }
+            echo "No se ha podido iniciar sesión :(";
+        
     }
 ?>
 

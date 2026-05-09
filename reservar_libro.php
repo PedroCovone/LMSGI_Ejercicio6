@@ -1,7 +1,7 @@
 <?php
 
     include "conexion_bbdd.php";
-    $Id_libro = $_GET["Id_libro"];
+    $Id_libro = $_GET["ID_libro"];
     $ID_usuario = $_GET["ID_usuario"];
 
 
@@ -31,9 +31,6 @@
     $resultado = $conexion->query($consulta3);
 
     if ($resultado == TRUE) {
-
-        $update = "UPDATE LIBROS SET ESTADO='no' WHERE ID='$Id_libro'";
-        $conexion->query($update);
 
         header("Location: reserva_realizada.php");
         exit();

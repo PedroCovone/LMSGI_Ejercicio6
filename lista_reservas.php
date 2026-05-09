@@ -3,7 +3,7 @@
     include "conexion_bbdd.php";
 
 $consultaPeliculas = "
-SELECT CLIENTES.NOMBRE, PELICULAS.Titulo, RESERVAS.Fecha_reserva, RESERVAS.Id
+SELECT CLIENTES.NOMBRE, PELICULAS.Titulo, RESERVAS.Fecha_reserva, RESERVAS.Id, RESERVAS.Id_pelicula
 FROM RESERVAS
 JOIN CLIENTES ON RESERVAS.Id = CLIENTES.ID
 JOIN PELICULAS ON RESERVAS.id_pelicula = PELICULAS.ID
@@ -13,7 +13,7 @@ JOIN PELICULAS ON RESERVAS.id_pelicula = PELICULAS.ID
 
 
     $consultaLibros = "
-SELECT CLIENTES.NOMBRE, LIBROS.Titulo, RESERVAS.Fecha_reserva, RESERVAS.Id
+SELECT CLIENTES.NOMBRE, LIBROS.Titulo, RESERVAS.Fecha_reserva, RESERVAS.Id, RESERVAS.Id_libro
 FROM RESERVAS
 JOIN CLIENTES ON RESERVAS.Id = CLIENTES.ID
 JOIN LIBROS ON RESERVAS.id_libro = LIBROS.ID
@@ -44,7 +44,8 @@ JOIN LIBROS ON RESERVAS.id_libro = LIBROS.ID
             Id=<?php echo $dato['Id']?>&
             Cliente=<?php echo $dato['NOMBRE']?>&
             Pelicula=<?php echo $dato['Titulo']?>&
-            Fecha=<?php echo $dato['Fecha_reserva']?>">Borrar</a></td>
+            Fecha=<?php echo $dato['Fecha_reserva']?>&
+            Id_pelicula=<?php echo $dato['Id_pelicula']?>">Borrar</a></td>
         </tr>
         <?php endforeach; ?>
     </table>
@@ -64,7 +65,14 @@ JOIN LIBROS ON RESERVAS.id_libro = LIBROS.ID
             <td> <?php echo $dato['NOMBRE'] ?> </td>
             <td> <?php echo $dato['Titulo'] ?> </td>
             <td> <?php echo $dato['Fecha_reserva'] ?> </td>
-            <td> <a href="eliminar_reserva.php?Id=<?php echo $dato['Id']?>">Borrar</a></td>
+            <td> <a href="eliminar_reserva.php?Id=<?php echo $dato['Id']?>&
+                        Cliente=<?php echo $dato['NOMBRE']?>&
+                                    Pelicula=<?php echo $dato['Titulo']?>&
+
+            Fecha=<?php echo $dato['Fecha_reserva']?>&
+            Id_libro=<?php echo $dato['Id_libro']?>"
+
+            >Borrar</a></td>
         </tr>
         <?php endforeach; ?>
     </table>

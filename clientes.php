@@ -1,6 +1,11 @@
 <?php
 
     include "conexion_bbdd.php";
+    session_start();
+    if (!isset($_SESSION["usuario"])) {
+        header("Location: conexion.php");
+        exit;
+    }
 
     $consulta = "SELECT * FROM CLIENTES";
     $resultado = $conexion->query($consulta);

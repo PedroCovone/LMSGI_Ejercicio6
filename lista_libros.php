@@ -10,7 +10,7 @@
     $ID_usuario = $_SESSION["ID_usuario"] ?? "";
 
    /* $consulta = "SELECT DISTINCT * FROM LIBROS";*/
-   $consulta = "SELECT LIBROS.*, AUTORES.Nombre AS NombreAutor
+   $consulta = "SELECT *
              FROM LIBROS
              INNER JOIN AUTORES
              ON LIBROS.Autor_id = AUTORES.ID";
@@ -133,13 +133,19 @@
             <?php foreach($libros as $libro): ?>
             <tr>
 
-             <?php 
-            if ($libro["ESTADO"] == "no"){
-             echo "<td>No disponible</td>";
+             <?php
+
+            $consultaReserva = "SELECT * FROM RESERVAS WHERE Id_libro = ".$libro["Id"];
+            $resultadoReserva = $conexion->query($consultaReserva);
+            $reservaExiste = $resultadoReserva->fetch_all(MYSQLI_ASSOC);
+
+            if (!empty($reservaExiste)){
+                echo "<td>No disponible</td>";
             }else{
-                    echo "<td><a href='reservar_libro.php?Id_libro=".$libro["Id"]."&ID_usuario=".$_SESSION["ID_usuario"]."'>Reservar</a></td>";
-                    }
-                ?>
+                echo "<td><a href='reservar_libro.php?ID_libro=".$libro["ID"]."&ID_usuario=".$_SESSION["ID_usuario"]."'>Reservar</a></td>";
+            }
+
+            ?>
                          
                 <td><?php echo $libro["Titulo"]  ?? "" ?> </td>
                 <td><?php echo $libro["NombreAutor"] ?? "";?></td>
