@@ -1,6 +1,11 @@
 <?php
     
     include "conexion_bbdd.php";
+    session_start();
+    if (!isset($_SESSION["usuario"])) {
+        header("Location: conexion.php");
+        exit;
+    }
     $ID_cliente = $_GET["Id"];
     $ID_pelicula = $_GET["Id_pelicula"]??"";
     $ID_libro = $_GET["Id_libro"]??"";

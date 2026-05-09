@@ -1,6 +1,11 @@
 <?php
 
     include "conexion_bbdd.php";
+    session_start();
+    if (!isset($_SESSION["usuario"])) {
+        header("Location: conexion.php");
+        exit;
+    }
 
 $consultaPeliculas = "
 SELECT CLIENTES.NOMBRE, PELICULAS.Titulo, RESERVAS.Fecha_reserva, RESERVAS.Id, RESERVAS.Id_pelicula

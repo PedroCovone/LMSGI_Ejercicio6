@@ -1,5 +1,10 @@
 <?php
     include "conexion_bbdd.php";
+    session_start();
+    if (!isset($_SESSION["usuario"])) {
+        header("Location: conexion.php");
+        exit;
+    }
     $titulo = $_POST["Titulo"];
 
     $nombreImagen = $_FILES["imagen"]["name"];

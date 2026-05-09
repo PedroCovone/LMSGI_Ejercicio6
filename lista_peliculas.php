@@ -1,13 +1,17 @@
 <?php
     
-    session_start();
     include "conexion_bbdd.php";
-    
+    session_start();
     if (!isset($_SESSION["usuario"])) {
         header("Location: conexion.php");
         exit;
     }
     
+    if (!isset($_SESSION["usuario"])) {
+        header("Location: conexion.php");
+        exit;
+    }
+
     if (isset($_GET["ID"])) {
         $_SESSION["ID_usuario"] = $_GET["ID"];
     }

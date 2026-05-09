@@ -1,6 +1,7 @@
 <?php   
 
     include "conexion_bbdd.php";
+    
 
     $idUsuario = $_GET["ID"];
     $consulta = "DELETE FROM CLIENTES WHERE ID = $idUsuario";
