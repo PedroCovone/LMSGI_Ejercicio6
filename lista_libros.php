@@ -13,7 +13,7 @@
 
     $ID_usuario = $_SESSION["ID_usuario"] ?? "";
 
-   /* $consulta = "SELECT DISTINCT * FROM LIBROS";*/
+
    $consulta = "SELECT *
              FROM LIBROS
              INNER JOIN AUTORES
@@ -22,13 +22,12 @@
     $libros = $resultado->fetch_all(MYSQLI_ASSOC);
 
 
-    /*Listar géneros (no sé si ponerlo aquí o en el html)*/
+
     $listaGeneros = "SELECT DISTINCT Genero FROM LIBROS";
     $resultado = $conexion->query($listaGeneros);
     $generos = $resultado->fetch_all(MYSQLI_ASSOC);
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        /*Filtro por títulos. Funciona, no lo toques Diego */
         if (!empty($_POST["titulo"])) {
             $titulo = $_POST["titulo"];
             $consultaTitulos = "SELECT LIBROS.*, AUTORES.Nombre AS NombreAutor
@@ -146,7 +145,7 @@
             if (!empty($reservaExiste)){
                 echo "<td>No disponible</td>";
             }else{
-                echo "<td><a href='reservar_libro.php?ID_libro=".$libro["ID"]."&ID_usuario=".$_SESSION["ID_usuario"]."'>Reservar</a></td>";
+                echo "<td><a href='reservar_libro.php?ID_libro=".$libro["Id"]."&ID_usuario=".$_SESSION["ID_usuario"]."'>Reservar</a></td>";
             }
 
             ?>
